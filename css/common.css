@@ -1,0 +1,32 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nunitovfbeta.css);
+:root{
+    --primaycolor:#058a8ae5;
+}
+*{
+    font-family: 'Nunito VF Beta', sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none; border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+    font-weight: 300;
+}
+*::selection{
+    background: var(--primaycolor);
+    color: #222;
+}
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--primaycolor);
+    color: #222;
+    padding: .8rem 3rem;
+    border: .2rem solid var(--primaycolor);
+    border-radius: .5rem;
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+.btn:hover{
+    background: #079191a3;
+}
