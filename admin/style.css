@@ -1,3 +1,8 @@
+html{
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
 #sidebar-toggle{
     display: none;
 }
@@ -137,12 +142,46 @@ main h2{
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.top .btn{
-    padding: 0 .4rem;
-    background: transparent;
+.top .change{
+    margin: 1rem;
+    padding:1rem;
     border: none;
     font-size: 1.3rem;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .1);
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .1);
+}
+.change:hover{
+    background: var(--primaycolor);
+}
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    margin: 1rem;
+    flex: 1 1 50rem;
+    padding: 2rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+    border-radius: .5rem;
+}
+.list table{
+    width: 100%;
+    border-collapse: collapse;
+    justify-content: center;
+    text-align: center;
+}
+.list th{
+    background-color: #47b0b0a3;
+    font-size: 1.3rem;
+}
+.list td, .list th {
+    border: 1px solid #ddd;
+    padding: .5rem;
+}
+.list .btn{
+    width: 4rem;
+    font-size: 1rem;
+    padding: .2rem .4rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
 }
 .inputBox{
     display: flex;
@@ -187,6 +226,14 @@ input[type="submit"]{
     font-size: 1.3rem;
     padding: .2rem .4rem;
 }
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.row .btn{
+    width: auto;
+    text-align: center;
+}
 @media only screen and (max-width:780px){
     .sidebar{
         width: 3.7rem;
@@ -211,5 +258,19 @@ input[type="submit"]{
     }
     .card-single{
         margin-bottom: 1rem;
+    }
+    .list{
+        margin: 0;
+        padding: 0;
+    }
+    .list th{
+        font-size: 1rem;
+    }
+    .list td, .list th {
+        font-size: .7rem;
+    }
+    .list .btn{
+        width: 2.5rem;
+        font-size: .7rem;
     }
 }

@@ -19,9 +19,9 @@
                 <ul>
                     <li><a href="index.html"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
                     <li><a href="package.html"><i class="fas fa-clipboard-list"></i><span>Package Managements</span></a></li>
-                    <li><a href=""><i class="fas fa-book"></i><span>Bookings</span></a></li>
-                    <li><a href=""><i class="fas fa-user"></i><span>Users</span></a></li>
-                    <li><a href=""><i class="fas fa-users"></i><span>User Managements</span></a></li>
+                    <li><a href="booking.html"><i class="fas fa-book"></i><span>Bookings</span></a></li>
+                    <li><a href="Users.html"><i class="fas fa-user"></i><span>Users</span></a></li>
+                    <li><a href="ManageUser.html"><i class="fas fa-users"></i><span>User Managements</span></a></li>
                 </ul>
             </div>
         </div>
@@ -38,28 +38,90 @@
             </header>
             <main>
                 <div class="top">
-                    <h2>Package</h2>
-                    <button class="btn">Add Package</button>
+                    <h2>Packages</h2>
+                    <a class="change" href="Addpackage.html">Add Package</a>
                 </div>
-                <div class="inputBox">
-                    <form action="">
-                        <h3>National Park Name</h3>
-                        <input type="text" placeholder="Name" name="name">
-                        <h3>National Park Type</h3>
-                        <input type="text" placeholder="Outdoor/Indoor" name="type">
-                        <h3>National Park Location</h3>
-                        <input type="text" placeholder="Location" name="location">
-                        <h3>Price in USD</h3>
-                        <input type="number" placeholder="Price" name="price">
-                        <h3>National Park Features</h3>
-                        <input type="text" placeholder="Features Eg-free Pickup-drop facility" name="feature">
-                        <h3>Attach National Park Image</h3>
-                        <input type="file" name="image">
-                        <h3>National Park Details</h3>
-                        <textarea placeholder="Details" name="details" id="" cols="30" rows="10"></textarea>                            
-                        <input class="btn" type="submit" value="Create">
-                        <button class="btn">Reset</button>
-                    </form>
+                <div class="list">
+                        <table>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Location</th>
+                                <th>Price</th>
+                                <th>Creation Date</th>
+                                <th>Action</th>
+                            </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>kidepo valley Np</td>
+                                  <td>General</td>
+                                  <td>Kullu Manali India</td>
+                                  <td>$100</td>
+                                  <td>2017-05-13 19:53:44</td>
+                                  <td><a href=""><button type="button" class="btn">Edit</button></a></td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>Entebbe Zoo</td>
+                                  <td>Indoor animals</td>
+                                  <td>Entebbe, Kampala,Uganda</td>
+                                  <td>$5433</td>
+                                  <td>2017-05-13 20:54:26</td>
+                                  <td><a href=><button type="button" class="btn">Edit</button></a></td>
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td>Marchision Falls NP</td>
+                                  <td>Outdoor animals</td>
+                                  <td>Demo test</td>
+                                  <td>$1000</td>
+                                  <td>2017-05-13 21:30:58</td>
+                                  <td><a href=""><button type="button" class="btn">Edit</button></a></td>
+                                </tr>
+                                <tr>
+                                  <td>4</td>
+                                  <td>Lake Mburo NP</td>
+                                  <td>Familty and Couple</td>
+                                  <td>Kerlal</td>
+                                  <td>$2000</td>
+                                  <td>2017-05-14 04:09:37</td>
+                                  <td><a href=""><button type="button" class="btn">Edit</button></a></td>
+                                </tr>
+                                <tr>
+                                  <td>5</td>
+                                  <td>Queen Elizabeth</td>
+                                  <td>Outdoor animals</td>
+                                  <td>Uganda</td>
+                                  <td>$3000</td>
+                                  <td>2017-05-14 04:12:10</td>
+                                  <td><a href=""><button type="button" class="btn">Edit</button></a></td>
+                                </tr>
+                                <tr >
+                                  <td>6</td>
+                                  <td>Bwindi  NP</td>
+                                  <td>Outdoor animals</td>
+                                  <td>Indonesia</td>
+                                  <td>$5000</td>
+                                  <td>2017-05-14 13:31:08</td>
+                                  <td><a href=""><button type="button" class="btn">Edit</button></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                                <ul>
+                                    <li class="btn">
+                                        <a href="#">Previous</a>
+                                    </li>
+                                    <li class="btn">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li class="btn">
+                                        <a href="#">Next</a>
+                                    </li>
+                                </ul>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
