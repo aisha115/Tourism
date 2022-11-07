@@ -35,7 +35,7 @@ if(isset($_POST['log']))
         <input type="email" class="box" placeholder="enter your email" name="email">
         <input type="password" class="box" placeholder="enter your password" name="password">
         <input type="submit" value="login now" class="btn" name="log">
-        <p>forget password?<a id="forget-btn">click here</a></p>
+        <!-- <p>forget password?<a id="forget-btn">click here</a></p> -->
         <p>don't have an account?<a id="register-btn">register now</a></p>
     </form>
 </div>

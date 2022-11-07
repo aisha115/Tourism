@@ -32,7 +32,7 @@ if(isset($_GET['delid']))
         <input type="checkbox" id="sidebar-toggle">
         <div class="sidebar">
             <div class="sidebar-header">
-                <h3>Travel</h3>
+                <a href="../index.php" class="logo"><h3>Travel</h3></a>
                 <label for="sidebar-toggle" class="fas fa-bars"></label>
             </div>
             <div class="sidebar-menu">
@@ -71,9 +71,9 @@ if(isset($_GET['delid']))
             <main>
                 <h2>Users</h2>
                 <div class="list">
-                    <div class="row">
+                    <!-- <div class="row">
                         <a id="register-btn" class="btn"><i class="fas fa-add"></i>Registere User</a>
-                    </div>
+                    </div> -->
                         <table>
                             <tr>
                                 <th>No.</th>
@@ -104,46 +104,12 @@ if(isset($_GET['delid']))
                                     <span ><?php  echo htmlentities(date("d-m-Y", strtotime($row->AdminRegdate)));?></span>
                                     </td>
                                     <td>
-                                    <a href="#"  class=" edit_data  btn btn-sm btn-primary" id="<?php echo  ($row->ID); ?>" title="click for edit" >Edit</a>
-                                    <a href="ManageUser.php?delid=<?php echo ($row->ID);?>" onclick="return confirm('Do you really want to Delete ?');" title="Delete this User" class="btn btn-sm btn-danger">Block</a> </td>
+                                    <a href="ManageUser.php?delid=<?php echo ($row->ID);?>" onclick="return confirm('Do you really want to Delete ?');" title="Delete this User" class="btn">Block</a> </td>
                                 </tr>
                                 <?php $cnt=$cnt+1;
                                 }
                             } ?>
                             </tbody>
-                            <!-- <tr>
-                                <td>1</td>
-                                <td>John Simith</td>
-                                <td>0770546590</td>
-                                <td>admin@gmail.com</td>
-                                <td>21-06-2021</td>
-                                <td>
-                                    <a href="" class="btn">Edit</a>
-                                    <a href="" class="btn">Block</a>
-                                </td>
-                            </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>Harry Ronald</td>
-                                  <td>0757537271</td>
-                                  <td>harry@gmail.com</td>
-                                  <td>21-06-2021</td>
-                                  <td>
-                                    <a href="" class="btn">Edit</a>
-                                    <a href="" class="btn">Block</a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>JHappy Morgan</td>
-                                    <td>0770546590</td>
-                                    <td>morgan@gmail.com</td>
-                                    <td>21-07-2021</td>
-                                    <td>
-                                        <a href="" class="btn">Edit</a>
-                                        <a href="" class="btn">Block</a>
-                                    </td>
-                                </tr> -->
                         </table>
                     </div>
                 </div>

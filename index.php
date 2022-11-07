@@ -36,7 +36,7 @@ include('includes/config.php');
         </header>
         <?php include("includes/signin.php");?>
         <?php include("includes/signup.php");?>
-        <div class="forget">
+        <!-- <div class="forget">
             <i class="fas-fa-time" id="forget-close"></i>
             <form action="">
                 <h3>New Password</h3>
@@ -44,7 +44,7 @@ include('includes/config.php');
                 <input type="password" class="box" placeholder="confirm new password">
                 <input type="submit" value="Change" class="btn">
             </form>
-        </div>
+        </div> -->
         <section class="home" id="home">
             <div class="content">
                 <h3>Adventure is worthwhile</h3>

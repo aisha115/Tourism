@@ -52,7 +52,7 @@ if(isset($_POST['submit']))
         <input type="checkbox" id="sidebar-toggle">
         <div class="sidebar">
             <div class="sidebar-header">
-                <h3>Travel</h3>
+            <a href="../index.php" class="logo"><h3>Travel</h3></a>
                 <label for="sidebar-toggle" class="fas fa-bars"></label>
             </div>
             <div class="sidebar-menu">

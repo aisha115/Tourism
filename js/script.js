@@ -6,9 +6,9 @@ let formClose=document.querySelector('#form-close');
 let regBtn=document.querySelector('#register-btn');
 let regForm=document.querySelector('.register-form-container');
 let regClose=document.querySelector('#reg-close');
-let forgetBtn=document.querySelector('#forget-btn');
-let forgetForm=document.querySelector('.forget');
-let forgetClose=document.querySelector('#forget-close');
+// let forgetBtn=document.querySelector('#forget-btn');
+// let forgetForm=document.querySelector('.forget');
+// let forgetClose=document.querySelector('#forget-close');
 let menu=document.querySelector('#menu-bar');
 let navbar=document.querySelector('.navbar');
 let videoBtn=document.querySelectorAll('.vid-btn');
@@ -20,7 +20,7 @@ window.onscroll=()=>{
     navbar.classList.remove('active');
     loginForm.classList.remove('active');
     regForm.classList.remove('active');
-    forgetForm.classList.remove('active');
+    // forgetForm.classList.remove('active');
 }
 
 menu.addEventListener('click',()=>{
@@ -48,16 +48,17 @@ regBtn.addEventListener('click',()=>{
 
 regClose.addEventListener('click',()=>{
     regForm.classList.remove('active');
+    loginForm.classList.add('active');
 });
 
-forgetBtn.addEventListener('click',()=>{
-    forgetForm.classList.add('active');
-    loginForm.classList.remove('active');
-});
+// forgetBtn.addEventListener('click',()=>{
+//     forgetForm.classList.add('active');
+//     loginForm.classList.remove('active');
+// });
 
-forgetClose.addEventListener('click',()=>{
-    forgetForm.classList.remove('active');
-});
+// forgetClose.addEventListener('click',()=>{
+//     forgetForm.classList.remove('active');
+// });
 
 videoBtn.forEach(btn=>{
     btn.addEventListener('click',()=>{

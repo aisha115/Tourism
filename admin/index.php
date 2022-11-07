@@ -63,7 +63,7 @@ include('includes/dbconnection.php');
         <input type="checkbox" id="sidebar-toggle">
         <div class="sidebar">
             <div class="sidebar-header">
-                <h3>Travel</h3>
+                <a href="../index.php" class="logo"><h3>Travel</h3></a>
                 <label for="sidebar-toggle" class="fas fa-bars"></label>
             </div>
             <div class="sidebar-menu">
@@ -108,7 +108,7 @@ include('includes/dbconnection.php');
                     <div class="card-single">
                         <div class="card-body">
                             <div>
-                                <h5>Total Packages</h5>
+                                <h5>Total Package</h5>
                                 <?php $sql3 = "SELECT PackageId from tbltourpackages";
                                     $query3= $dbh -> prepare($sql3);
                                     $query3->execute();

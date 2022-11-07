@@ -8,7 +8,7 @@ if(isset($_POST['submit2']))
 	$useremail=$_SESSION['login'];
 	$fromdate=$_POST['fromdate'];
 	$todate=$_POST['todate'];
-	$comment=$_POST['comment'];
+    $comment=$_POST['comment'];
 	$status=0;
 	$sql="INSERT INTO tblbooking(PackageId,UserEmail,FromDate,ToDate,Comment,status) VALUES(:pid,:useremail,:fromdate,:todate,:comment,:status)";
 	$query = $dbh->prepare($sql);
@@ -102,27 +102,22 @@ if(isset($_POST['submit2']))
                         </div>
                 <form name="book" method="post">
                     <div class="inputBox">
-                        <h3>where to</h3>
-                        <input type="text" placeholder="place name">
-                    </div>
-                    <div class="inputBox">
-                        <h3>how many</h3>
-                        <input type="number" placeholder="number of guests">
-                    </div>
-                    <div class="inputBox">
                         <h3>arrivals</h3>
-                        <input type="date">
+                        <input type="date" name="fromdate">
                     </div>
                     <div class="inputBox">
                         <h3>leaving</h3>
-                        <input type="date">
+                        <input type="date" name="todate">
                     </div>
+                    <br><br>
+                    <textarea placeholder="message" class="textBox" name="comment" id="" cols="30" rows="10"></textarea>
                     <?php if($_SESSION['login'])
 					{?>
-                    <input type="submit" value="book now" class="btn">
+                    <input type="submit" value="book now" class="btn" name="submit2">
                     <?php 
 					} else {?>
-                    <a href="#" data-toggle="modal" data-target="#myModal4"  class="btn" > Book</a>
+                    <script> alert("Please login before book")</script>
+                    <a href="#" data-toggle="modal" data-target="#myModal4"  class="btn"> Book</a>
                     <?php
 					} ?>
                 </form>
@@ -131,44 +126,6 @@ if(isset($_POST['submit2']))
 						}
 					} ?>
                     </div>
-            <!-- <div class="row">
-                <div class="image">
-                    <img src="images/<?php echo htmlentities($result->PackageImage);?>" alt="">
-                    <div class="content">
-                        <h3><i class="fas fa-map-marker-alt"></i> <?php echo htmlentities($result->PackageName);?></h3>
-                        <p><?php echo htmlentities($result->PackageType);?>
-                        <br><?php echo htmlentities($result->PackageLocation);?>
-                        <br><?php echo htmlentities($result->PackageFetures);?>
-                        </p>
-                    </div>
-                </div>
-                <form action="">
-                    <div class="inputBox">
-                        <h3>where to</h3>
-                        <input type="text" placeholder="place name">
-                    </div>
-                    <div class="inputBox">
-                        <h3>how many</h3>
-                        <input type="number" placeholder="number of guests">
-                    </div>
-                    <div class="inputBox">
-                        <h3>arrivals</h3>
-                        <input type="date">
-                    </div>
-                    <div class="inputBox">
-                        <h3>leaving</h3>
-                        <input type="date">
-                    </div>
-                    <?php if($_SESSION['login'])
-					{?>
-                    <input type="submit" value="book now" class="btn">
-                    <?php 
-					} else {?>
-                    <a href="#" data-toggle="modal" data-target="#myModal4"  class="btn" > Book</a>
-                    <?php
-					} ?>
-                </form>
-            </div> -->
         </section>
         <script src="js/script.js"></script> 
     </body>

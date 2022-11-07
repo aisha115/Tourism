@@ -54,7 +54,7 @@ if(isset($_REQUEST['bckid']))
         <input type="checkbox" id="sidebar-toggle">
         <div class="sidebar">
             <div class="sidebar-header">
-                <h3>Travel</h3>
+            <a href="../index.php" class="logo"><h3>Travel</h3></a>
                 <label for="sidebar-toggle" class="fas fa-bars"></label>
             </div>
             <div class="sidebar-menu">
@@ -145,7 +145,7 @@ if(isset($_REQUEST['bckid']))
                                 else {
                                 ?>
                                 <td>
-                                    <a href="manage_bookings.php?bkid=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Do you really want to cancel booking')" >Cancel</a>&nbsp;<a href="manage_bookings.php?bckid=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Do you really want to confirm booking')" >Confirm</a>
+                                    <a href="booking.php?bkid=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Do you really want to cancel booking')" style="color:red; text-decoration:underline;">Cancel</a>&nbsp;<a href="booking.php?bckid=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Do you really want to confirm booking')" style="color: green; text-decoration:underline;">Confirm</a>
                                 </td>
                                 <?php 
                                 }?>
@@ -154,72 +154,7 @@ if(isset($_REQUEST['bckid']))
                             } 
                             }?>
                             </tbody>
-                                <!-- <tr>
-                                  <td>#BK-13</td>
-                                  <td>Gerald Brain</td>
-                                  <td>0770546590</td>
-                                  <td>gerald@gmail.com</td>
-                                  <td>Queen Elizabeth</td>
-                                  <td>2020-12-11 To 2020-12-11</td>
-                                  <td>Real i need to tour that place</td>
-                                  <td>Confirmed</td>
-                                  <td>Confirmed</td>
-                                </tr>
-                                <tr>
-                                    <td>#BK-14</td>
-                                    <td>Gerald Brain</td>
-                                    <td>0770546590</td>
-                                    <td>gerald@gmail.com</td>
-                                    <td>Entebbe Zoo</td>
-                                    <td>2021-01-12 To 2021-01-15</td>
-                                    <td>kk</td>
-                                    <td>Canceled by User at 2021-01-14 16:50:42</td>
-                                    <td>Cancelled</td>
-                                </tr>
-                                <tr>
-                                    <td>#BK-15</td>
-                                    <td>Gerald Brain</td>
-                                    <td>0770546590</td>
-                                    <td>gerald@gmail.com</td>
-                                    <td>Lake Mburo NP</td>
-                                    <td>2021-01-14 To 2021-01-16</td>
-                                    <td>tour</td>
-                                    <td>Canceled by User at 2021-02-15 14:26:58</td>
-                                    <td>Cancelled</td>
-                                </tr>
-                                <tr>
-                                    <td>#BK-16</td>
-                                    <td>Gerald Brain</td>
-                                    <td>0770546590</td>
-                                    <td>gerald@gmail.com</td>
-                                    <td>Entebbe Zoo</td>
-                                    <td>2021-03-26 To 2021-03-31</td>
-                                    <td>Real i need to tour that place</td>
-                                    <td>Pending</td>
-                                    <td>Cancel Confirm</td>
-                                </tr>
-                                <tr>
-                                    <td>#BK-17</td>
-                                    <td>John Simith</td>
-                                    <td>0770546590</td>
-                                    <td>admin@gmail.com</td>
-                                    <td>Bwindi NP</td>
-                                    <td>2021-07-28 To 2021-07-30</td>
-                                    <td>Test</td>
-                                    <td>Canceled by you at 2021-07-24 15:34:22</td>
-                                    <td>Cancelled</td>
-                                </tr>
-                                <tr >
-                                    <td>#BK-18</td>
-                                    <td>John Simith</td>
-                                    <td>0770546590</td>
-                                    <td>admin@gmail.com</td>
-                                    <td>kidepo valley Np</td>
-                                    <td>2021-07-24 To 2021-07-26</td>
-                                    <td>smart travel test</td>
-                                    <td>Confirmed</td>
-                                    <td>Confirmed</td>
-                                </tr> -->
+                                
                         </table>
                         <div class="row">
                                 <ul>
