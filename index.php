@@ -1,25 +1,28 @@
+<?php
+session_start();
+error_reporting(0);
+include('includes/config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tourism Management System</title>
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/common.css">
     </head>
-    <body>    
+    <body>   
         <header>
             <div id="menu-bar" class="fas fa-bars"></div>
-            <a href="./admin/index.html" class="logo"><span>T</span>ravel</a>
+            <a href="./admin/index.php" class="logo"><span>T</span>ravel</a>
             <nav class="navbar">
                 <a href="#home">Home</a>
                 <a href="#packages">Packages</a>
                 <a href="#services">Services</a>
                 <a href="#gallery">Gallery</a>
-                <a href="#review">Review</a>
                 <a href="#contact">Contact</a>
             </nav>
             <div class="icons">
@@ -31,33 +34,8 @@
                 <label for="search-bar" class="fas fa-search"></label>
             </form>
         </header>
-        <div class="login-form-container">
-            <i class="fas-fa-time" id="form-close"></i>
-            <form action="">
-                <h3>Login</h3>
-                <input type="email" class="box" placeholder="enter your email">
-                <input type="password" class="box" placeholder="enter your password">
-                <input type="submit" value="login now" class="btn">
-                <input type="checkbox" id="remember">
-                <label for="remember">remember me</label>
-                <p>forget password?<a id="forget-btn">click here</a></p>
-                <p>don't have an account?<a id="register-btn">register now</a></p>
-            </form>
-        </div>
-        <div class="register-form-container">
-            <i class="fas-fa-time" id="reg-close"></i>
-            <form action="">
-                <h3>Register Now</h3>
-                <input type="text" class="box" placeholder="Name">
-                <input type="email" class="box" placeholder="Email">
-                <input type="password" class="box" placeholder="Password">
-                <input type="password" class="box" placeholder="Confirm Password">
-                <input type="number" class="box" placeholder="Contact Number">
-                <input type="checkbox" id="remember">
-                <label for="remember">I accept the <span>Terms of Use </span>&<span> Privacy Policy</span></label>
-                <input type="submit" value="register now" class="btn">
-            </form>
-        </div>
+        <?php include("includes/signin.php");?>
+        <?php include("includes/signup.php");?>
         <div class="forget">
             <i class="fas-fa-time" id="forget-close"></i>
             <form action="">
@@ -95,60 +73,32 @@
                 <span>s</span>
             </h1>
             <div class="box-container">
-                <div class="box">
-                    <img src="images/t1.jpg" alt="">
-                    <div class="content">
-                        <h3><i class="fas fa-map-marker-alt"></i> mumbai</h3>
-                        <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        <div class="price">$90.00<span> $120.00</span></div>
-                        <a href="booking.html" class="btn">book now</a>
+            <?php 
+            $sql = "SELECT * from tbltourpackages order by rand() ";
+            $query = $dbh->prepare($sql);
+            $query->execute();
+            $results=$query->fetchAll(PDO::FETCH_OBJ);
+            $cnt=1;
+            if($query->rowCount() > 0)
+            {
+                foreach($results as $result)
+                { 
+            ?>
+                    <div class="box">
+                        <img src="images/<?php echo htmlentities($result->PackageImage);?>" alt="">
+                        <div class="content">
+                            <h3>Park Name: <?php echo htmlentities($result->PackageName);?></h3>
+                            <p><b>Park Type:</b> <?php echo htmlentities($result->PackageType);?></p>
+                            <p><b><i class="fas fa-map-marker-alt"></i>Location :</b> <?php echo htmlentities($result->PackageLocation);?></p>
+                            <p><b>Features: </b> <?php echo htmlentities($result->PackageFetures);?></p>
+                            <h3 style="padding: 1rem 0rem;">USD <?php echo htmlentities($result->PackagePrice);?></h3>
+                            <a href="booking.php?pkgid=<?php echo htmlentities($result->PackageId);?>" class="btn">book now</a>
+                        </div>
                     </div>
-                </div>
-                <div class="box">
-                    <img src="images/t2.jpg" alt="">
-                    <div class="content">
-                        <h3><i class="fas fa-map-marker-alt"></i> delhi</h3>
-                        <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        <div class="price">$90.00<span> $120.00</span></div>
-                        <a href="booking.html" class="btn">book now</a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="images/t3.jpg" alt="">
-                    <div class="content">
-                        <h3><i class="fas fa-map-marker-alt"></i> asam</h3>
-                        <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        <div class="price">$90.00<span> $120.00</span></div>
-                        <a href="booking.html" class="btn">book now</a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="images/t4.jpg" alt="">
-                    <div class="content">
-                        <h3><i class="fas fa-map-marker-alt"></i> manali</h3>
-                        <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        <div class="price">$90.00<span> $120.00</span></div>
-                        <a href="booking.html" class="btn">book now</a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="images/t5.jpg" alt="">
-                    <div class="content">
-                        <h3><i class="fas fa-map-marker-alt"></i> kerla</h3>
-                        <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        <div class="price">$90.00<span> $120.00</span></div>
-                        <a href="booking.html" class="btn">book now</a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="images/t6.jpg" alt="">
-                    <div class="content">
-                        <h3><i class="fas fa-map-marker-alt"></i> goa</h3>
-                        <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        <div class="price">$90.00<span> $120.00</span></div>
-                        <a href="booking.html" class="btn">book now</a>
-                    </div>
-                </div>
+            <?php 
+                }
+            } 
+            ?>
             </div>
         </section>
         <section class="services" id="services">
@@ -271,62 +221,6 @@
                 </div>
             </div>
         </section>
-        <section class="review" id="review">
-            <h1 class="heading">
-                <span>r</span>
-                <span>e</span>
-                <span>v</span>
-                <span>i</span>
-                <span>e</span>
-                <span>w</span>
-            </h1>
-            <div class="swiper-container review-slider">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="box">
-                            <img src="images/t15.jpg" alt="">
-                            <h3>Lissa doe</h3>
-                            <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="box">
-                            <img src="images/t15.jpg" alt="">
-                            <h3>Lissa doe</h3>
-                            <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="box">
-                            <img src="images/t15.jpg" alt="">
-                            <h3>Lissa doe</h3>
-                            <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="box">
-                            <img src="images/t15.jpg" alt="">
-                            <h3>Lissa doe</h3>
-                            <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="box">
-                            <img src="images/t15.jpg" alt="">
-                            <h3>Lissa doe</h3>
-                            <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="box">
-                            <img src="images/t15.jpg" alt="">
-                            <h3>Lissa doe</h3>
-                            <p>The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <section class="contact" id="contact">
             <h1 class="heading">
                 <span>c</span>
@@ -367,7 +261,6 @@
                  </ul>        
             </div>    
         </footer>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
        <script src="js/script.js"></script> 
     </body>
 </html>

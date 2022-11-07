@@ -1,3 +1,12 @@
+<?php
+session_start();
+error_reporting(0);
+include('includes/dbconnection.php');
+?>
+<!-- <?php
+include('includes/checklogin.php');
+check_login();
+?> -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,11 +26,11 @@
             </div>
             <div class="sidebar-menu">
                 <ul>
-                    <li><a href="index.html"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
-                    <li><a href="package.html"><i class="fas fa-clipboard-list"></i><span>Package Managements</span></a></li>
-                    <li><a href="booking.html"><i class="fas fa-book"></i><span>Bookings</span></a></li>
-                    <li><a href="Users.html"><i class="fas fa-user"></i><span>Users</span></a></li>
-                    <li><a href="ManageUser.html"><i class="fas fa-users"></i><span>User Managements</span></a></li>
+                    <li><a href="index.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
+                    <li><a href="package.php"><i class="fas fa-clipboard-list"></i><span>Package Managements</span></a></li>
+                    <li><a href="booking.php"><i class="fas fa-book"></i><span>Bookings</span></a></li>
+                    <li><a href="Users.php"><i class="fas fa-user"></i><span>Users</span></a></li>
+                    <li><a href="ManageUser.php"><i class="fas fa-users"></i><span>User Managements</span></a></li>
                 </ul>
             </div>
         </div>
@@ -38,6 +47,18 @@
             </header>
             <main>
                 <h2>Users</h2>
+                <?php if($error){?>
+                    <div class="errorWrap">
+                      <strong>ERROR</strong>:<?php echo htmlentities($error); ?> 
+                    </div>
+                    <?php
+                  } 
+                  else if($msg){?>
+                    <div class="succWrap">
+                      <strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?>
+                    </div>
+                    <?php 
+                  }?>
                 <div class="list">
                         <table>
                             <tr>
@@ -48,22 +69,28 @@
                                 <th>RegDate</th>
                                 <th>Updation Date</th>
                             </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Gerald Brain</td>
-                                  <td>0770546590</td>
-                                  <td>gerald@gmail.com</td>
-                                  <td>2020-01-15 19:30:35</td>
-                                  <td>2021-07-24 15:19:44</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>John Simith</td>
-                                    <td>0770546590</td>
-                                    <td>admin@gmail.com</td>
-                                    <td>2021-07-24 14:04:08</td>
-                                    <td></td>
-                                </tr>
+                            <tbody>
+                            <?php $sql = "SELECT * from tblusers";
+                            $query = $dbh -> prepare($sql);
+                            $query->execute();
+                            $results=$query->fetchAll(PDO::FETCH_OBJ);
+                            $cnt=1;
+                            if($query->rowCount() > 0)
+                            {
+                                foreach($results as $result)
+                                {       
+                            ?>    
+                                    <tr>
+                                        <td><?php echo htmlentities($cnt);?></td>
+                                        <td><?php echo htmlentities($result->FullName);?></td>
+                                        <td><?php echo htmlentities($result->MobileNumber);?></td>
+                                        <td><?php echo htmlentities($result->EmailId);?></td>
+                                        <td><?php echo htmlentities($result->RegDate);?></td>
+                                        <td><?php echo htmlentities($result->UpdationDate);?></td>
+                                    </tr>
+                            <?php $cnt=$cnt+1;
+                                } 
+                            }?>
                             </tbody>
                         </table>
                         <div class="row">

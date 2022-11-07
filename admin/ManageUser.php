@@ -1,3 +1,23 @@
+<?php
+session_start();
+error_reporting(0);
+include('includes/dbconnection.php');
+if(isset($_GET['delid']))
+{
+  $rid=intval($_GET['delid']);
+  $sql="update tbladmin set Status='0' where ID='$rid'";
+  $query=$dbh->prepare($sql);
+  $query->bindParam(':rid',$rid,PDO::PARAM_STR);
+  $query->execute();
+  if ($query->execute()){
+    echo "<script>alert('User blocked');</script>"; 
+    echo "<script>window.location.href = 'user_register.php'</script>";
+  }else{
+    echo '<script>alert("update failed! try again later")</script>';
+  }
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,11 +37,11 @@
             </div>
             <div class="sidebar-menu">
                 <ul>
-                    <li><a href="index.html"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
-                    <li><a href="package.html"><i class="fas fa-clipboard-list"></i><span>Package Managements</span></a></li>
-                    <li><a href="booking.html"><i class="fas fa-book"></i><span>Bookings</span></a></li>
-                    <li><a href="Users.html"><i class="fas fa-user"></i><span>Users</span></a></li>
-                    <li><a href=""><i class="fas fa-users"></i><span>User Managements</span></a></li>
+                    <li><a href="index.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
+                    <li><a href="package.php"><i class="fas fa-clipboard-list"></i><span>Package Managements</span></a></li>
+                    <li><a href="booking.php"><i class="fas fa-book"></i><span>Bookings</span></a></li>
+                    <li><a href="Users.php"><i class="fas fa-user"></i><span>Users</span></a></li>
+                    <li><a href="ManageUser.php"><i class="fas fa-users"></i><span>User Managements</span></a></li>
                 </ul>
             </div>
         </div>
@@ -63,7 +83,35 @@
                                 <th>Date Registered</th>
                                 <th>Action</th>
                             </tr>
-                            <tr>
+                            <tbody>
+                            <?php
+                            $sql="SELECT * from tbladmin where Status='1'  ";
+                            $query = $dbh -> prepare($sql);
+                            $query->execute();
+                            $results=$query->fetchAll(PDO::FETCH_OBJ);
+                            $cnt=1;
+                            if($query->rowCount() > 0)
+                            {
+                                foreach($results as $row)
+                                {    
+                                ?>
+                                <tr>
+                                    <td><?php echo htmlentities($cnt);?></td>
+                                    <td><?php  echo htmlentities($row->FirstName);?>&nbsp;<?php  echo htmlentities($row->LastName);?></td>
+                                    <td>0<?php  echo htmlentities($row->MobileNumber);?></td>
+                                    <td><?php  echo htmlentities($row->Email);?></td>
+                                    <td>
+                                    <span ><?php  echo htmlentities(date("d-m-Y", strtotime($row->AdminRegdate)));?></span>
+                                    </td>
+                                    <td>
+                                    <a href="#"  class=" edit_data  btn btn-sm btn-primary" id="<?php echo  ($row->ID); ?>" title="click for edit" >Edit</a>
+                                    <a href="ManageUser.php?delid=<?php echo ($row->ID);?>" onclick="return confirm('Do you really want to Delete ?');" title="Delete this User" class="btn btn-sm btn-danger">Block</a> </td>
+                                </tr>
+                                <?php $cnt=$cnt+1;
+                                }
+                            } ?>
+                            </tbody>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>John Simith</td>
                                 <td>0770546590</td>
@@ -95,8 +143,7 @@
                                         <a href="" class="btn">Edit</a>
                                         <a href="" class="btn">Block</a>
                                     </td>
-                                </tr>
-                            </tbody>
+                                </tr> -->
                         </table>
                     </div>
                 </div>
